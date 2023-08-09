@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Details</title>
+        <link rel="stylesheet" href="Login.css">
+
+    </head>
+  <body>
+    <div class="Login">
+        <label for="empid">EmpId</label>
+        <input type="text" placeholder="Enter Employee ID" required maxlength="6">
+        <label for="name">Name</label>
+        <input type="name" placeholder="Enter Name" required maxlength="30">
+        <label for="domain">Select Domain:</label>
+        <select id="domain" onchange="updateModuleOptions()">
+          <option value="">Select</option>
+          <option value="JEE">JEE</option>
+          <option value=".Net">.Net</option>
+        </select>
+      
+        <label for="module">Select Module:</label>
+        <select id="module">
+          <option value="">Select Domain First</option>
+        </select>
+      
+        <script>
+          function updateModuleOptions() {
+            const domainSelect = document.getElementById("domain");
+            const moduleSelect = document.getElementById("module");
+            
+            // Clear previous options
+            moduleSelect.innerHTML = '<option value="">Select Domain First</option>';
+            
+            // Define module options based on selected domain
+            if (domainSelect.value === "JEE") {
+              const jeeModules = ["Java", "Angular", "Dot"];
+              jeeModules.forEach(module => {
+                const option = document.createElement("option");
+                option.value = module;
+                option.text = module;
+                moduleSelect.appendChild(option);
+              });
+            } else if (domainSelect.value === ".Net") {
+              const dotNetModules = ["ADE"];
+              dotNetModules.forEach(module => {
+                const option = document.createElement("option");
+                option.value = module;
+                option.text = module;
+                moduleSelect.appendChild(option);
+              });
+            }
+          }
+      </script>
+     </div>
+  </body>
+</html>
